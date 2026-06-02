@@ -141,7 +141,15 @@
     });
     const activeThumb = elements.thumbGrid.children[state.index];
     if (activeThumb) {
-      activeThumb.scrollIntoView({ block: "nearest", inline: "nearest" });
+      const container = elements.thumbGrid;
+      const thumbRect = activeThumb.getBoundingClientRect();
+      const containerRect = container.getBoundingClientRect();
+      const isVisible = thumbRect.left >= containerRect.left && thumbRect.right <= containerRect.right;
+
+      if (!isVisible) {
+        const scrollAmount = thumbRect.left - containerRect.left - (containerRect.width / 2) + (thumbRect.width / 2);
+        container.scrollLeft += scrollAmount;
+      }
     }
   }
 
