@@ -298,7 +298,63 @@ figcaption strong {
   color: var(--muted);
 }
 
-@media (max-width: 900px) {
+/* 手機版 (< 480px) */
+@media (max-width: 479px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: 65% 35%;
+    padding: 10px;
+    gap: 12px;
+  }
+
+  .stage,
+  .panel {
+    min-height: auto;
+  }
+
+  .viewer {
+    min-height: 0;
+  }
+
+  .viewer img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .stage__topbar,
+  .panel__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .counter {
+    min-width: 0;
+  }
+
+  .nav-button {
+    width: 40px;
+    height: 56px;
+  }
+
+  .thumb-grid {
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 6px;
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .controls button,
+  .controls select {
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+}
+
+/* 平板版 (480px - 900px) */
+@media (min-width: 480px) and (max-width: 900px) {
   .app-shell {
     grid-template-columns: 1fr;
     grid-template-rows: 55% 45%;
@@ -321,26 +377,18 @@ figcaption strong {
 
   .thumb-grid {
     grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 8px;
   }
 }
 
-@media (max-width: 560px) {
-  .stage__topbar,
-  .panel__header {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .counter {
-    min-width: 0;
-  }
-
-  .nav-button {
-    width: 44px;
-    height: 60px;
+/* 桌面版 (> 900px) - 保持最優佈局 */
+@media (min-width: 901px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: 60% 40%;
   }
 
   .thumb-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
   }
 }
