@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2026 畢業生照片輪播</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="stage" aria-label="照片輪播">
+        <div class="stage__topbar">
+          <div>
+            <p class="eyebrow">第 123 屆</p>
+            <h1>2026 畢業生照片輪播</h1>
+          </div>
+          <div class="counter" aria-live="polite">
+            <span id="currentIndex">1</span>
+            <span>/</span>
+            <span id="totalCount">0</span>
+          </div>
+        </div>
+
+        <figure class="viewer">
+          <button class="nav-button nav-button--prev" id="prevButton" type="button" aria-label="上一張">‹</button>
+          <img id="mainPhoto" alt="畢業生照片" draggable="false">
+          <button class="nav-button nav-button--next" id="nextButton" type="button" aria-label="下一張">›</button>
+          <figcaption>
+            <span id="photoFolder">資料夾</span>
+            <strong id="photoName">照片名稱</strong>
+          </figcaption>
+        </figure>
+
+        <div class="controls" aria-label="輪播控制">
+          <button id="playPauseButton" type="button">暫停</button>
+          <button id="shuffleButton" type="button">隨機</button>
+          <button id="fullscreenButton" type="button">全螢幕</button>
+          <label>
+            <span>速度</span>
+            <select id="speedSelect">
+              <option value="2500">快</option>
+              <option value="4000" selected>標準</option>
+              <option value="6500">慢</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <aside class="panel" aria-label="照片分類">
+        <div class="panel__header">
+          <h2>照片分類</h2>
+          <p id="unsupportedNotice"></p>
+        </div>
+        <div id="folderFilters" class="filters"></div>
+        <div id="thumbGrid" class="thumb-grid" aria-label="縮圖清單"></div>
+      </aside>
+    </main>
+
+    <script src="photos.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
