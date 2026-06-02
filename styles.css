@@ -110,7 +110,7 @@ h2 {
 .viewer {
   position: relative;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   width: 100%;
   flex: 1;
@@ -118,9 +118,6 @@ h2 {
   overflow: hidden;
   border: 1px solid var(--line);
   background: #050504;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .viewer::before {
