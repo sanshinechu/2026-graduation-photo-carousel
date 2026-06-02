@@ -39,10 +39,11 @@ select {
 .app-shell {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 50% 50%;
+  grid-template-rows: 1fr 1fr;
   gap: 12px;
-  min-height: 100vh;
+  height: 100vh;
   padding: 12px;
+  overflow: hidden;
 }
 
 .stage,
