@@ -56,9 +56,9 @@ select {
 .stage {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto;
-  gap: 16px;
+  gap: 8px;
   min-height: 0;
-  padding: 18px;
+  padding: 10px;
 }
 
 .stage__topbar,
@@ -84,7 +84,7 @@ p {
 }
 
 h1 {
-  font-size: clamp(1.6rem, 3vw, 3.4rem);
+  font-size: clamp(1.1rem, 2vw, 2rem);
   font-weight: 800;
 }
 
