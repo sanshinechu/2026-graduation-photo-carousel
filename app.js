@@ -49,6 +49,15 @@
     }
   }
 
+  function preloadFullPhoto(fullPath) {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload = () => resolve(fullPath);
+      img.onerror = () => resolve(null);
+      img.src = encodePhotoPath(fullPath);
+    });
+  }
+
   function showPhoto(nextIndex) {
     if (!state.filteredPhotos.length) {
       elements.mainPhoto.removeAttribute("src");
@@ -64,8 +73,10 @@
     elements.mainPhoto.classList.add("is-changing");
 
     window.setTimeout(() => {
-      const encodedPath = encodePhotoPath(photo.path);
-      elements.mainPhoto.src = encodedPath;
+      const thumbPath = encodePhotoPath(photo.thumb || photo.path);
+      const fullPath = photo.path;
+
+      elements.mainPhoto.src = thumbPath;
       elements.mainPhoto.alt = `${photo.folder} - ${photo.name}`;
       elements.photoFolder.textContent = photo.folder;
       elements.photoName.textContent = photo.name;
@@ -75,9 +86,15 @@
       elements.mainPhoto.classList.remove("is-changing");
 
       elements.mainPhoto.onerror = () => {
-        console.error(`圖片加載失敗: ${encodedPath}`, photo);
+        console.error(`圖片加載失敗: ${thumbPath}`, photo);
         elements.photoName.textContent = `${photo.name} (加載失敗)`;
       };
+
+      preloadFullPhoto(fullPath).then((loadedPath) => {
+        if (loadedPath && elements.mainPhoto.src.includes(photo.thumb || photo.path)) {
+          elements.mainPhoto.src = encodePhotoPath(fullPath);
+        }
+      });
     }, 120);
   }
 

@@ -23,10 +23,16 @@ function scanPhotos(dir, folderName = '', photoList = []) {
       scanPhotos(filePath, entry, photoList);
     } else if (stat.isFile()) {
       const ext = path.extname(entry).toLowerCase();
-      if (/^(\.jpg|\.jpeg|\.png)$/.test(ext)) {
+      if (/^(\.jpg|\.jpeg|\.png)$/.test(ext) && !entry.includes('.thumb')) {
         const relativePath = path.relative(rootDir, filePath).replace(/\\/g, '/');
+        const thumbDir = path.dirname(filePath);
+        const basename = path.basename(filePath, ext);
+        const thumbPath = path.join(thumbDir, `${basename}.thumb${ext}`).replace(/\\/g, '/');
+        const thumbRelativePath = path.relative(rootDir, thumbPath).replace(/\\/g, '/');
+
         photoList.push({
           path: relativePath,
+          thumb: thumbRelativePath,
           folder: folderName || '其他',
           name: entry,
           size: stat.size

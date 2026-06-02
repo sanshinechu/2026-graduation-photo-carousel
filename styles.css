@@ -119,6 +119,9 @@ h2 {
   border: 1px solid var(--line);
   background: #050504;
   padding-top: 12px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .viewer::before {
