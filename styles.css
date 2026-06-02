@@ -109,13 +109,14 @@ h2 {
 .viewer {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   min-height: 0;
   margin: 0;
   overflow: hidden;
   border: 1px solid var(--line);
   background: #050504;
+  padding-top: 12px;
 }
 
 .viewer::before {
