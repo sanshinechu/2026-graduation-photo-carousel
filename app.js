@@ -1,6 +1,6 @@
 (function () {
   const supportedPhotos = (window.GRADUATION_PHOTOS || []).filter((photo) =>
-    /\.(jpe?g|png)$/i.test(photo.path)
+    /\.(jpe?g|png|heic)$/i.test(photo.path)
   );
   const unsupportedCount = (window.GRADUATION_PHOTOS || []).length - supportedPhotos.length;
 
@@ -53,7 +53,7 @@
     if (!state.filteredPhotos.length) {
       elements.mainPhoto.removeAttribute("src");
       elements.photoFolder.textContent = "沒有照片";
-      elements.photoName.textContent = "目前分類沒有可顯示的 JPG/JPEG/PNG";
+      elements.photoName.textContent = "目前分類沒有可顯示的照片";
       elements.currentIndex.textContent = "0";
       elements.totalCount.textContent = "0";
       return;
@@ -64,7 +64,8 @@
     elements.mainPhoto.classList.add("is-changing");
 
     window.setTimeout(() => {
-      elements.mainPhoto.src = encodePhotoPath(photo.path);
+      const encodedPath = encodePhotoPath(photo.path);
+      elements.mainPhoto.src = encodedPath;
       elements.mainPhoto.alt = `${photo.folder} - ${photo.name}`;
       elements.photoFolder.textContent = photo.folder;
       elements.photoName.textContent = photo.name;
@@ -72,6 +73,11 @@
       elements.totalCount.textContent = String(state.filteredPhotos.length);
       updateActiveThumb();
       elements.mainPhoto.classList.remove("is-changing");
+
+      elements.mainPhoto.onerror = () => {
+        console.error(`圖片加載失敗: ${encodedPath}`, photo);
+        elements.photoName.textContent = `${photo.name} (加載失敗)`;
+      };
     }, 120);
   }
 
@@ -105,7 +111,7 @@
     if (!state.filteredPhotos.length) {
       const empty = document.createElement("p");
       empty.className = "empty";
-      empty.textContent = "這個分類沒有瀏覽器可直接顯示的照片。";
+      empty.textContent = "這個分類沒有照片。";
       elements.thumbGrid.appendChild(empty);
       return;
     }
