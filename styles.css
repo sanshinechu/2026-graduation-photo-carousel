@@ -39,7 +39,7 @@ select {
 .app-shell {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 2fr 1fr;
   gap: 12px;
   height: 100vh;
   padding: 12px;
