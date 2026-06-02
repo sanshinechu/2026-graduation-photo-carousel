@@ -37,12 +37,11 @@ select {
 }
 
 .app-shell {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 5fr 1fr;
-  gap: 8px;
+  display: flex;
+  flex-direction: column;
   height: 100vh;
   padding: 8px;
+  gap: 8px;
   overflow: hidden;
 }
 
@@ -55,11 +54,17 @@ select {
 }
 
 .stage {
-  display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto;
-  gap: 4px;
+  display: flex;
+  flex-direction: column;
+  flex: 5;
   min-height: 0;
+  gap: 4px;
   padding: 6px;
+}
+
+.panel {
+  flex: 1;
+  min-height: 0;
 }
 
 .stage__topbar,
@@ -110,8 +115,10 @@ h2 {
 
 .viewer {
   position: relative;
-  width: 100%;
-  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
   min-height: 0;
   overflow: hidden;
   border: 1px solid var(--line);
@@ -130,12 +137,11 @@ h2 {
 }
 
 .viewer img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center center;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  display: block;
   opacity: 1;
   transform: scale(1);
   transition: opacity 260ms ease, transform 700ms ease;
@@ -226,8 +232,6 @@ figcaption strong {
   display: grid;
   grid-template-rows: auto auto minmax(0, 1fr);
   gap: 14px;
-  min-height: 0;
-  max-height: 100%;
   width: 100%;
   padding: 16px;
   overflow: hidden;
