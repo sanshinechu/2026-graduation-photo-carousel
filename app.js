@@ -12,6 +12,7 @@
     playing: true,
     intervalMs: 4000,
     timer: null,
+    loadingIndex: -1,
   };
 
   const elements = {
@@ -75,6 +76,7 @@
     window.setTimeout(() => {
       const thumbPath = encodePhotoPath(photo.thumb || photo.path);
       const fullPath = photo.path;
+      state.loadingIndex = state.index;
 
       elements.mainPhoto.src = thumbPath;
       elements.mainPhoto.alt = `${photo.folder} - ${photo.name}`;
@@ -91,7 +93,7 @@
       };
 
       preloadFullPhoto(fullPath).then((loadedPath) => {
-        if (loadedPath && elements.mainPhoto.src.includes(photo.thumb || photo.path)) {
+        if (loadedPath && state.loadingIndex === state.index) {
           elements.mainPhoto.src = encodePhotoPath(fullPath);
         }
       });
