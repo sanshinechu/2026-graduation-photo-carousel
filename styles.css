@@ -110,12 +110,9 @@ h2 {
 
 .viewer {
   position: relative;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
   width: 100%;
-  flex: 1;
-  margin: 0;
+  align-self: stretch;
+  min-height: 0;
   overflow: hidden;
   border: 1px solid var(--line);
   background: #050504;
@@ -133,10 +130,10 @@ h2 {
 }
 
 .viewer img {
-  width: auto;
+  position: absolute;
+  inset: 0;
+  width: 100%;
   height: 100%;
-  max-width: 100%;
-  max-height: 100%;
   object-fit: contain;
   object-position: top center;
   opacity: 1;
