@@ -387,7 +387,13 @@ figcaption strong {
 @media (min-width: 901px) {
   .app-shell {
     grid-template-columns: 1fr;
-    grid-template-rows: 2fr 1fr;
+    grid-template-rows: 3fr 1fr;
+  }
+
+  .viewer {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .viewer img {
