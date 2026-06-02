@@ -384,7 +384,7 @@ figcaption strong {
 @media (min-width: 901px) {
   .app-shell {
     grid-template-columns: 1fr;
-    grid-template-rows: 3fr 1fr;
+    grid-template-rows: 4fr 1fr;
   }
 
   .viewer {
