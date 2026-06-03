@@ -183,7 +183,7 @@
   });
   elements.playPauseButton.addEventListener("click", () => {
     state.playing = !state.playing;
-    elements.playPauseButton.textContent = state.playing ? "暫停" : "播放";
+    elements.playPauseButton.textContent = state.playing ? "⏸ 暫停" : "▶ 播放";
     setTimer();
   });
   elements.shuffleButton.addEventListener("click", shuffleCurrentPhotos);

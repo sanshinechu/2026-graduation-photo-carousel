@@ -7,14 +7,26 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    <div class="sky-decor sky-decor--one" aria-hidden="true"></div>
+    <div class="sky-decor sky-decor--two" aria-hidden="true"></div>
+    <div class="confetti confetti--one" aria-hidden="true"></div>
+    <div class="confetti confetti--two" aria-hidden="true"></div>
     <main class="app-shell">
       <section class="stage" aria-label="照片輪播">
         <div class="stage__topbar">
-          <div>
-            <p class="eyebrow">第 123 屆</p>
-            <h1>2026 畢業生照片輪播</h1>
+          <div class="title-group">
+            <div class="mascot" aria-hidden="true">
+              <span class="mascot__cap"></span>
+              <span class="mascot__face">•ᴗ•</span>
+            </div>
+            <div>
+              <p class="eyebrow">第 123 屆 · 青春紀念冊</p>
+              <h1>2026 畢業生照片輪播</h1>
+              <p class="subtitle">把閃閃發亮的校園回憶，一張一張收藏起來！</p>
+            </div>
           </div>
           <div class="counter" aria-live="polite">
+            <small>現在看到</small>
             <span id="currentIndex">1</span>
             <span>/</span>
             <span id="totalCount">0</span>
@@ -32,11 +44,11 @@
         </figure>
 
         <div class="controls" aria-label="輪播控制">
-          <button id="playPauseButton" type="button">暫停</button>
-          <button id="shuffleButton" type="button">隨機</button>
-          <button id="fullscreenButton" type="button">全螢幕</button>
+          <button id="playPauseButton" type="button">⏸ 暫停</button>
+          <button id="shuffleButton" type="button">✦ 隨機回憶</button>
+          <button id="fullscreenButton" type="button">⛶ 全螢幕</button>
           <label>
-            <span>速度</span>
+            <span>輪播速度</span>
             <select id="speedSelect">
               <option value="2500">快</option>
               <option value="4000" selected>標準</option>
@@ -48,7 +60,10 @@
 
       <aside class="panel" aria-label="照片分類">
         <div class="panel__header">
-          <h2>照片分類</h2>
+          <div>
+            <p class="panel__eyebrow">MEMORY ALBUM</p>
+            <h2>選一段可愛回憶</h2>
+          </div>
           <p id="unsupportedNotice"></p>
         </div>
         <div id="folderFilters" class="filters"></div>
